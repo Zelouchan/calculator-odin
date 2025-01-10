@@ -55,12 +55,17 @@ body {
 
 .numberButtons button {
     height: 3em;
-    width: 3em;
+    width: 4em;
 }
 
-.operatorButtons button{
+.top button{
     height: 3em;
     width: 6em;
+}
+
+.bottom button{
+    height: 6em;
+    width: 3em;
 }
 .operatorButtons {
     align-self: end;
@@ -68,14 +73,17 @@ body {
     flex-direction: column;
     width: 40%;
     height: 100%;
-    margin: 1px;
+    margin: 5px;
 }
 
 .top {
+    display: flex;
     font-family: 'Courier New', Courier, monospace;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .bottom {
+    display: flex;
     font-family: 'Courier New', Courier, monospace;
+    flex-direction: row;
 }
