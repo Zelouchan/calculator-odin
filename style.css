@@ -10,8 +10,10 @@ body {
 .main {
     display: flex;
     flex-direction: column;
+    align-self: center;
+    justify-self: center;
     height: 80%;
-    width: 60%;
+    width: 40%;
     background-color: gray;
     border: 5px solid black;
     justify-content: stretch;
@@ -45,45 +47,15 @@ body {
 
 .numberButtons {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     grid-gap: 10px;
-    width: 60%;
+    width: 80%;
     height: 100%;
     margin: 1px;
 }
 
 .numberButtons button {
     height: 3em;
-    width: 4em;
-}
-
-.top button{
-    height: 3em;
-    width: 6em;
-}
-
-.bottom button{
-    height: 6em;
-    width: 3em;
-}
-.operatorButtons {
-    align-self: end;
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    height: 100%;
-    margin: 5px;
-}
-
-.top {
-    display: flex;
-    font-family: 'Courier New', Courier, monospace;
-    flex-direction: column;
-}
-
-.bottom {
-    display: flex;
-    font-family: 'Courier New', Courier, monospace;
-    flex-direction: row;
+    width: 7em;
 }
