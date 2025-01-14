@@ -1,14 +1,20 @@
 // Creates the original array where user puts numbers into
 const numbers = [];
 
-// registers which button is clicked and puts it into array. Makes sure to exclude clear and backspace
+// Dispays user input in the screen
+function user() {
+document.getElementById("input").innerHTML = numbers.join(' ');
+};
+
+// registers which button is clicked and puts it into array. Makes sure to exclude clear and backspace. 
 const buttonId = (event) => {
   let buttonNumber = event.target.id;
 
-  if (buttonNumber !== "backspace" && buttonNumber !== "clear") {
+  if (buttonNumber !== "backspace" && buttonNumber !== "clear" && buttonNumber !== "is") {
     numbers.push(buttonNumber);
     console.log(numbers);
   }
+  user();
 };
 
 // button click event
@@ -23,7 +29,7 @@ function calculation(arr) {
   let currentNumber = "";
 
   for (let item of arr) {
-    if (!isNaN(item) || item === ".") {
+    if (!isNaN(item) || (item === "." && !currentNumber.includes("."))) {
       currentNumber += item;
     } else {
       if (currentNumber) {
@@ -41,26 +47,39 @@ function calculation(arr) {
 
 // function to call the answer of the sum, round to 2 decimals and display
 document.getElementById("is").onclick = function () {
-  const result = Math.round(calculateAnswer() * 100) /100;
-  console.log(result);
-  document.getElementById("answer").textContent = `${result}`;
-};
+  const result = calculateAnswer();
+  if (result === "string") {
+    document.getElementById("answers").innerHTML = result;
+  } else {
+  let answer = Math.round(result * 100) /100;
+  document.getElementById("answers").textContent = `${answer}`;
+}};
 
 //   function that takes the array items, checks the operator and performs the calculation.
 function calculateAnswer() {
-  const calculations = calculation(numbers);
-  if (calculations[1] === "+") {
-    return calculations[0] + calculations[2];
-  } else if (calculations[1] === "-") {
-    return calculations[0] - calculations[2];
-  } else if (calculations[1] === "*") {
-    return calculations[0] * calculations[2];
-  } else if (calculations[1] === "/") {
-    return calculations[0] / calculations[2];
-  } else {
-    return "error";
-  }
-}
+  const calculations = calculation(numbers); 
+  // const operators = ['*','/','-','+'];
+
+  // if (calculations[3] === operators) {
+  //   return "error"
+  // }
+
+  switch (calculations[1]) {
+    case "+":
+      return calculations[0] + calculations[2];
+    case "-":
+      return calculations[0] - calculations[2];
+    case "*":
+      return calculations[0] * calculations[2];
+    case "/":
+      if (calculations[2] === 0) {
+        return "Time to Pay Numpty Tax"; 
+      } else {
+        return calculations[0] / calculations[2];
+      }
+    default:
+      return "error";
+}};
 
 //  function for backspace
 document.getElementById("backspace").onclick = function () {
@@ -70,7 +89,9 @@ document.getElementById("backspace").onclick = function () {
 
 // function to clear all user input
 document.getElementById("clear").onclick = function () {
-    numbers.length = 0
+    numbers.length = 0;
+    document.getElementById("answers").textContent = "";
+    user();
 };
 
 
