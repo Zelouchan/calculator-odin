@@ -48,7 +48,7 @@ function calculation(arr) {
 // function to call the answer of the sum, round to 2 decimals and display
 document.getElementById("is").onclick = function () {
   const result = calculateAnswer();
-  if (result === "string") {
+  if (typeof result === "string") {
     document.getElementById("answers").innerHTML = result;
   } else {
   let answer = Math.round(result * 100) /100;
@@ -58,12 +58,14 @@ document.getElementById("is").onclick = function () {
 //   function that takes the array items, checks the operator and performs the calculation.
 function calculateAnswer() {
   const calculations = calculation(numbers); 
-  // const operators = ['*','/','-','+'];
+  // checking if there is more than one operator used at the time;
+  const operators = ['*','/','-','+'];
+  const operatorCount = numbers.filter(item => operators.includes(item)).length;
+  if (operatorCount >1) {
+    return "Only one operator allowed.";
+  }
 
-  // if (calculations[3] === operators) {
-  //   return "error"
-  // }
-
+  // does the actual calculations
   switch (calculations[1]) {
     case "+":
       return calculations[0] + calculations[2];
@@ -93,5 +95,15 @@ document.getElementById("clear").onclick = function () {
     document.getElementById("answers").textContent = "";
     user();
 };
+
+// keyboard support
+document.addEventListener('keyup', (e) => {
+  const accepted = ['0','1','2','3','4','5','6','7','8','9','0','+','-','/','*'];
+  if (accepted.includes (e.key)) {
+    numbers.push(e.key);
+    user();
+  }
+});
+
 
 
