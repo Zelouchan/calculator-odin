@@ -12,7 +12,6 @@ const buttonId = (event) => {
 
   if (buttonNumber !== "backspace" && buttonNumber !== "clear" && buttonNumber !== "is") {
     numbers.push(buttonNumber);
-    console.log(numbers);
   }
   user();
 };
@@ -48,7 +47,7 @@ function calculation(arr) {
 // function to call the answer of the sum, round to 2 decimals and display
 document.getElementById("is").onclick = function () {
   const result = calculateAnswer();
-  if (typeof result === "string") {
+  if (typeof result === "string") { 
     document.getElementById("answers").innerHTML = result;
   } else {
   let answer = Math.round(result * 100) /100;
@@ -84,10 +83,7 @@ function calculateAnswer() {
 }};
 
 //  function for backspace
-document.getElementById("backspace").onclick = function () {
-  let deleted = numbers.pop();
-  console.log(deleted);
-};
+document.getElementById("backspace").onclick = () => numbers.pop();
 
 // function to clear all user input
 document.getElementById("clear").onclick = function () {
@@ -96,14 +92,13 @@ document.getElementById("clear").onclick = function () {
     user();
 };
 
+
 // keyboard support
 document.addEventListener('keyup', (e) => {
-  const accepted = ['0','1','2','3','4','5','6','7','8','9','0','+','-','/','*'];
+  const accepted = ['0','1','2','3','4','5','6','7','8','9','0','+','-','/','*','='];
   if (accepted.includes (e.key)) {
     numbers.push(e.key);
     user();
   }
 });
-
-
 

@@ -2,7 +2,7 @@
 .handjet-handjet {
   font-family: "Handjet", serif;
   font-optical-sizing: auto;
-  font-weight: 400;
+  font-weight: 600;
   font-style: normal;
   font-variation-settings:
     "ELGR" 1,
@@ -10,17 +10,21 @@
 }
 
 :root {
-    background-color: bisque;
+    --bg-color: #B5C2B7;
+    --machine-color: #45364B;
+    --button-color: #62466B;
+    --screen-color: #8C93A8;
+    ---border-color: #2D2327;
 }
 
 body {
-    height: 100%;
+    height: 80%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: large;
     font-family: Handjet;
+    background-color: var(--bg-color);
 }
 
 .main {
@@ -30,18 +34,21 @@ body {
     justify-content: center;
     height: 80%;
     width: 40%;
-    background-color: gray;
-    border: 5px solid black;
+    border: 6px solid var(---border-color);
+    border-radius: 1em;
     align-items: center;
+    margin-top: 50px;
+    background-color: var(--machine-color);
 }
 
 .screen {
     text-align: right;
-    min-height: 50px;
+    min-height: 80px;
     min-width: 90%;
-    border: 2px solid black;
+    border: 3px solid var(---border-color);
     border-radius: 1em;
     margin: 1em;
+    background-color: var(--screen-color);
 }
 
 .userInput {
@@ -54,8 +61,16 @@ body {
     padding-right: 10px;
 }
 
+#input {
+    font-size: 25px;
+}
+
+#answers {
+    font-size: 40px;
+}
+
 .answer {
-    border: 1px solid black;
+    border: 3px solid var(---border-color);
     height: 60%;
 }
 
@@ -66,12 +81,19 @@ body {
     grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
     column-gap: 0.3em;
     row-gap: 0.3em;
-    margin-bottom: 0.3em;
+    margin-bottom: 1em;
 }
 
 .numberButtons button {
     height: 3em;
     width: 100%;
     border-radius: 1em;
-    /* margin: 1em; */
+    font-family: Handjet;
+    font-size: 20px;
+    border: 3px solid var(---border-color);
+    font-weight: 500;background-color: var(--button-color);
+}
+
+.numberButtons button:hover {
+    border: 5px solid var(---border-color);
 }
