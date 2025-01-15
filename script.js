@@ -9,7 +9,6 @@ document.getElementById("input").innerHTML = numbers.join(' ');
 // registers which button is clicked and puts it into array. Makes sure to exclude clear and backspace. 
 const buttonId = (event) => {
   let buttonNumber = event.target.id;
-
   if (buttonNumber !== "backspace" && buttonNumber !== "clear" && buttonNumber !== "is") {
     numbers.push(buttonNumber);
   }
@@ -101,4 +100,11 @@ document.addEventListener('keyup', (e) => {
     user();
   }
 });
+
+// to do list: 
+// keyboard support for =
+// only allow one operator at the time (automatically calculates outcome when second operator is pressed?)
+// clear screen and array on error
+// move variables to the top of the screen
+// create more functions for readability
 
